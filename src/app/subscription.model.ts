@@ -1,9 +1,11 @@
 export class Subscription {
     id: string;
     title: string;
-    amount: number;
+    amount: string;
     description: string;
-    paydate: string;
-    startdate: Date;
-    enddate: Date;
+    
+    /*paydate: string;
+    startdate: string;
+    enddate: string;
+    */
 }
