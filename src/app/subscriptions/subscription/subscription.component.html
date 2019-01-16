@@ -1,3 +1,29 @@
-<p>
+<!-- <p>
   subscription works!
 </p>
+-->
+<!-- https://getbootstrap.com/docs/4.2/content/typography/ -->
+<h1 class="display-4">Add subscription</h1>
+  <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> <!-- Automatic id from the service itself -->
+    
+    <div class="form-group">
+      <input name="title" #title="ngModel" [(ngModel)]="subService.formData.title" class="form-control" placeholder="title" required>
+    </div>
+    
+    <div class="form-group">
+      <input name="description" #description="ngModel" [(ngModel)]="subService.formData.description" class="form-control" placeholder="description">
+    </div> 
+    
+    <div class="form-group">
+        <input name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" class="form-control" placeholder="amount" required>
+    </div> 
+    
+    <div class="form-group">
+        <input name="paydate" #paydate="ngModel" [(ngModel)]="subService.formData.paydate" class="form-control" placeholder="paydate">
+    </div> 
+    
+    <div class="form-group">
+      <button type="submit" class="btn btn-lg btn-block btn-info">Submit</button>
+    </div>
+</form>

@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/env';
-import { SubscriptionService } from './subscription.service';
+import { SubscriptionService} from './shared/subscription.service';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { SubscriptionComponent } from './subscriptions/subscription/subscription.component';
 import { SubscriptionListComponent } from './subscriptions/subscription-list/subscription-list.component';
-//import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,10 +23,10 @@ import { SubscriptionListComponent } from './subscriptions/subscription-list/sub
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseconfig), // File not included in the git repo for security reasons
-    AngularFireDatabaseModule
-   //AngularFirestoreModule.enablePersistence()
+    AngularFireDatabaseModule,
+    FormsModule
   ],
-  providers: [SubscriptionService],
+  providers: [SubscriptionService], // provide the service globally to the whole application as it is the main function in the application
   bootstrap: [AppComponent]
 })
 export class AppModule { }
