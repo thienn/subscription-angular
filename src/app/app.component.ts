@@ -1,7 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
-import { SubscriptionService } from 'src/app/subscription.service';
-import { Subscription } from 'src/app/subscription.model';
-
+import { SubscriptionService } from '../app/subscription.service';
+import { Subscription } from '../app/subscription.model';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +15,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.subscriptionService.getSubscriptions().subscribe(data => {
-      this.subscriptions = data.map(sub => {
+      this.subscriptions = data.map(subcription => {
         return {
-          id: sub.payload.doc.id,
-          ...sub.payload.doc.data()
+          id: subcription.payload.doc.id,
+          ...subcription.payload.doc.data()
         } as Subscription;
       })
     });
@@ -29,6 +28,7 @@ export class AppComponent implements OnInit {
     this.subscriptionService.createSubscription(subscription);
   }
 
+  /*
   update(subscription: Subscription) {
     this.subscriptionService.updateSubscription(subscription);
   }
@@ -36,4 +36,5 @@ export class AppComponent implements OnInit {
   delete(id: string) {
     this.subscriptionService.deleteSubscription(id);
   }
+  */
 }

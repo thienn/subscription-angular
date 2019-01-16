@@ -13,6 +13,7 @@ export class SubscriptionService {
         return this.store.collection('subscriptions').add(subscription);
     }
 
+    /*
     updateSubscription(subscription: Subscription) {
         delete subscription.id;
         this.store.doc('subscriptions/' + subscription.id).update(subscription);
@@ -21,4 +22,5 @@ export class SubscriptionService {
     deleteSubscription(subscriptionId: String) {
         this.store.doc('subscriptions/' + subscriptionId).delete();
     }
+    */
 }
