@@ -1,3 +1,24 @@
+<!--
 <p>
   subscription-list works!
 </p>
+-->
+<table class="table table-hover">
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Paydate</th>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let subscription of listOfSubscriptions">
+      <td (click)="onUpdate(subscription)">{{ subscription.title }}</td>
+      <td (click)="onUpdate(subscription)">{{ subscription.description }}</td>
+      <td (click)="onUpdate(subscription)">{{ subscription.amount }}</td>
+      <td (click)="onUpdate(subscription)">{{ subscription.paydate }}</td>
+      <td><a a class="btn text-danger" (click)="onDelete(subscription.id)"><i class="fa fa-trash"></i></a></td> <!-- Hyperlink to activate the delete function, passing in the id of the selected subscription -->
+    </tr>
+  </tbody>
+</table>
+

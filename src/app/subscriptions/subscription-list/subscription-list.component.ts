@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from '../../shared/subscription.model';
+import { SubscriptionService } from '../../shared/subscription.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-subscription-list',
@@ -6,10 +9,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subscription-list.component.css']
 })
 export class SubscriptionListComponent implements OnInit {
+  listOfSubscriptions: Subscription[]; // Array to store the subscriptions from the DB
 
-  constructor() { }
+  constructor(private subService: SubscriptionService, private store: AngularFirestore) { }
 
   ngOnInit() {
+    // on init, subscribe to the service that will get the data from Firebase, then spread out that data for the list to use. Due to the subscribe it will create an observable that will update whenever new data comes from the DB
+    this.subService.getSubscriptions().subscribe(data => {
+      this.listOfSubscriptions = data.map(subscription => {
+        return {
+          id: subscription.payload.doc.id,
+          ...subscription.payload.doc.data()
+        } as Subscription;
+      })
+    });
   }
 
+  // Move the logic over to service later
+  // Pass in the data from formData into the update function
+  onUpdate(subcription: Subscription) {
+    this.subService.formData = Object.assign({}, subcription);
+  }
+
+  onDelete(id: string) {
+    /*
+    if(confirm("This will be permanently deleted from the DB")) {
+      this.store.doc('subscriptions/' + id).delete();
+    }*/
+    this.store.doc('subscriptions/' + id).delete();
+  }
 }
