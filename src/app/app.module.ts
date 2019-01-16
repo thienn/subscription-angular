@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { environment } from '../environments/env';
 import { SubscriptionService} from './shared/subscription.service';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
@@ -23,7 +24,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseconfig), // File not included in the git repo for security reasons
-    AngularFireDatabaseModule,
+    AngularFirestoreModule,
     FormsModule
   ],
   providers: [SubscriptionService], // provide the service globally to the whole application as it is the main function in the application

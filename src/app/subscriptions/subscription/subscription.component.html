@@ -5,7 +5,7 @@
 <!-- https://getbootstrap.com/docs/4.2/content/typography/ -->
 <h1 class="display-4">Add subscription</h1>
   <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> <!-- Automatic id from the service itself -->
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> <!-- Needed for the update operation & also used for determining if it's an update or create -->
     
     <div class="form-group">
       <input name="title" #title="ngModel" [(ngModel)]="subService.formData.title" class="form-control" placeholder="title" required>
