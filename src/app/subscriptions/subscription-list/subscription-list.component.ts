@@ -24,18 +24,15 @@ export class SubscriptionListComponent implements OnInit {
       })
     });
   }
-
-  // Move the logic over to service later
-  // Pass in the data from formData into the update function
-  onUpdate(subcription: Subscription) {
-    this.subService.formData = Object.assign({}, subcription);
+  
+  // To populate the input fields when clicking on a item
+  onUpdateMode(subcription: Subscription) {
+    this.subService.updateSubscriptionFields(subcription);
   }
 
   onDelete(id: string) {
-    /*
     if(confirm("This will be permanently deleted from the DB")) {
-      this.store.doc('subscriptions/' + id).delete();
-    }*/
-    this.store.doc('subscriptions/' + id).delete();
+      this.subService.deleteSubscription(id);
+    }
   }
 }

@@ -31,13 +31,17 @@ export class SubscriptionComponent implements OnInit {
     }
   } 
 
+  clearFields() {
+    this.resetForm();
+  }  
+
   onSubmit(form: NgForm) {
     let data = Object.assign({}, form.value); // Get the data from the form (input fields) 
     delete data.id; // Delete the ID as Firestore will create it's own
     if (form.value.id == null) {
-      this.store.collection('subscriptions').add(data); 
+      this.subService.addSubscription(data);
     } else {
-      this.store.doc('subscriptions/' + form.value.id).update(data);
+     this.subService.updateSubscription(form.value.id, data);
     }
     this.resetForm(form);
   }

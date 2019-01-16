@@ -13,10 +13,10 @@
 
   <tbody>
     <tr *ngFor="let subscription of listOfSubscriptions">
-      <td (click)="onUpdate(subscription)">{{ subscription.title }}</td>
-      <td (click)="onUpdate(subscription)">{{ subscription.description }}</td>
-      <td (click)="onUpdate(subscription)">{{ subscription.amount }}</td>
-      <td (click)="onUpdate(subscription)">{{ subscription.paydate }}</td>
+      <td (click)="onUpdateMode(subscription)">{{ subscription.title }}</td>
+      <td (click)="onUpdateMode(subscription)">{{ subscription.description }}</td>
+      <td (click)="onUpdateMode(subscription)">{{ subscription.amount }}</td>
+      <td (click)="onUpdateMode(subscription)">{{ subscription.paydate }}</td>
       <td><a a class="btn text-danger" (click)="onDelete(subscription.id)"><i class="fa fa-trash"></i></a></td> <!-- Hyperlink to activate the delete function, passing in the id of the selected subscription -->
     </tr>
   </tbody>
