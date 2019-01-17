@@ -26,7 +26,7 @@ export class SubscriptionComponent implements OnInit {
       id: null,
       title: '',
       description: '',
-      amount: '',
+      amount: 0,
       paydate: ''
     }
   } 

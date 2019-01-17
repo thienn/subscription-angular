@@ -10,6 +10,7 @@
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> <!-- Needed for the update operation & also used for determining if it's an update or create -->
     
     <div class="form-group">
+      <label>Title:</label>
       <input name="title" #title="ngModel" [(ngModel)]="subService.formData.title" class="form-control" placeholder="title" required>
       <!-- Validation check -->
       <div *ngIf="title.invalid && (title.dirty || title.touched)"
@@ -21,10 +22,12 @@
     </div>
     
     <div class="form-group">
+        <label>Description:</label>
       <input name="description" #description="ngModel" [(ngModel)]="subService.formData.description" class="form-control" placeholder="description">
     </div> 
     
     <div class="form-group">
+        <label>Amount:</label>
         <input name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" class="form-control" placeholder="amount" required>
         <!-- Validation check -->
         <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
@@ -36,11 +39,12 @@
     </div> 
     
     <div class="form-group">
+        <label>Paydate(day of the month):</label>
         <input name="paydate" #paydate="ngModel" [(ngModel)]="subService.formData.paydate" class="form-control" placeholder="paydate">
     </div> 
     
     <div class="form-group">
-      <button type="submit" class="btn btn-lg btn-block btn-success" [disabled]="form.form.pristine || form.form.invalid">Submit</button>
+      <button type="submit" mat-flat-button color="primary" [disabled]="form.form.pristine || form.form.invalid">Submit</button>
     </div>
 </form>
-<button (click)="clearFields()" class="btn btn-outline-info">Clear</button>
+<button (click)="clearFields()" mat-stroked-button color="primary">Clear</button>
