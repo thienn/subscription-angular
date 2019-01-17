@@ -3,12 +3,21 @@
 </p>
 -->
 <!-- https://getbootstrap.com/docs/4.2/content/typography/ -->
+<!-- https://appdividend.com/2018/10/30/angular-7-form-validation-example-tutorial/ -->
+
 <h1 class="display-4">Add subscription</h1>
   <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> <!-- Needed for the update operation & also used for determining if it's an update or create -->
     
     <div class="form-group">
       <input name="title" #title="ngModel" [(ngModel)]="subService.formData.title" class="form-control" placeholder="title" required>
+      <!-- Validation check -->
+      <div *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="alert alert-danger">
+        <div *ngIf="title.errors.required">
+          Title is required.
+        </div>
+      </div>
     </div>
     
     <div class="form-group">
@@ -17,6 +26,13 @@
     
     <div class="form-group">
         <input name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" class="form-control" placeholder="amount" required>
+        <!-- Validation check -->
+        <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+          class="alert alert-danger">
+        <div *ngIf="amount.errors.required">
+          Amount is required.
+        </div>
+      </div>
     </div> 
     
     <div class="form-group">
@@ -24,7 +40,7 @@
     </div> 
     
     <div class="form-group">
-      <button type="submit" class="btn btn-lg btn-block btn-info">Submit</button>
+      <button type="submit" class="btn btn-lg btn-block btn-success" [disabled]="form.form.pristine || form.form.invalid">Submit</button>
     </div>
 </form>
-<button (click)="clearFields()" class="btn btn-lg btn-block btn-info">Clear</button>
+<button (click)="clearFields()" class="btn btn-outline-info">Clear</button>
