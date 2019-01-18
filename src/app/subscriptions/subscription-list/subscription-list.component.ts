@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./subscription-list.component.css']
 })
 export class SubscriptionListComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'description', 'amount', 'paydate'];
+  displayedColumns: string[] = ['title', 'description', 'amount', 'paydate', 'delete'];
   listOfSubscriptions: Subscription[]; // Array to store the subscriptions from the DB
 
   constructor(private subService: SubscriptionService, private store: AngularFirestore) { }

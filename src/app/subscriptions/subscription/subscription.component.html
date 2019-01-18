@@ -5,14 +5,15 @@
 <!-- https://getbootstrap.com/docs/4.2/content/typography/ -->
 <!-- https://appdividend.com/2018/10/30/angular-7-form-validation-example-tutorial/ -->
 
+<!--
 <h1 class="display-4">Add subscription</h1>
   <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> <!-- Needed for the update operation & also used for determining if it's an update or create -->
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> // Needed for the update operation & also used for determining if it's an update or create 
     
     <div class="form-group">
       <label>Title:</label>
       <input name="title" #title="ngModel" [(ngModel)]="subService.formData.title" class="form-control" placeholder="title" required>
-      <!-- Validation check -->
+       Validation check 
       <div *ngIf="title.invalid && (title.dirty || title.touched)"
           class="alert alert-danger">
         <div *ngIf="title.errors.required">
@@ -29,7 +30,7 @@
     <div class="form-group">
         <label>Amount:</label>
         <input name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" class="form-control" placeholder="amount" required>
-        <!-- Validation check -->
+         Validation check 
         <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
           class="alert alert-danger">
         <div *ngIf="amount.errors.required">
@@ -48,3 +49,36 @@
     </div>
 </form>
 <button (click)="clearFields()" mat-stroked-button color="primary">Clear</button>
+-->
+<h1>Add subscription</h1>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+<input type="hidden" name="id" #id="ngModel" [(ngModel)]="subService.formData.id"> 
+
+<div class="form-container">
+  <mat-form-field>
+    <input name="title" #title="ngModel" [(ngModel)]="subService.formData.title" matInput placeholder="title" required>
+  </mat-form-field>
+       <!--<div *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="alert alert-danger">
+        <div *ngIf="title.errors.required">
+          Title is required.
+        </div>
+      </div>
+      -->
+    <mat-form-field>
+      <input name="description" #description="ngModel" [(ngModel)]="subService.formData.description" matInput placeholder="description">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" matInput placeholder="amount" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="paydate" #paydate="ngModel" [(ngModel)]="subService.formData.paydate" matInput placeholder="paydate">
+    </mat-form-field>
+</div>
+    <p>
+      <button type="submit" mat-flat-button color="primary" [disabled]="form.form.pristine || form.form.invalid">Submit</button>
+    </p>
+    <button (click)="clearFields()" mat-stroked-button color="primary">Clear</button>
+</form>

@@ -13,7 +13,8 @@ import { SubscriptionListComponent } from './subscriptions/subscription-list/sub
 
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatTableModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatTableModule, MatGridListModule, MatIconModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,12 @@ import { MatButtonModule, MatCheckboxModule, MatTableModule } from '@angular/mat
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatGridListModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [SubscriptionService], // provide the service globally to the whole application as it is the main function in the application
   bootstrap: [AppComponent]
