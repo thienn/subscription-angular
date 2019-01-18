@@ -1,5 +1,8 @@
 # SubscriptionAngular
 
+### Note - Config for Firebase not included
+Made this project to do some tests with Angular Material and refresh myself on basics of Angular. Feel free to use it. Database is Firebase. The env(configs) file is not included here. Create your own config and put it in a env.ts file in environments folder
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
 ## Development server
