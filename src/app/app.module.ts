@@ -16,6 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppMaterialModule } from './app-material/app-material.module';
+import { HeaderComponent } from './header/header.component';
+import { AuthComponent } from './auth/auth.component';
+
+import { AppRoutingModule } from './app.routes.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,9 @@ import { AppMaterialModule } from './app-material/app-material.module';
     SubscriptionsComponent,
     SubscriptionComponent,
     SubscriptionListComponent,
+    HeaderComponent,
+    AuthComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,8 @@ import { AppMaterialModule } from './app-material/app-material.module';
     AppMaterialModule,
     FormsModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
   ],
   providers: [SubscriptionService], // provide the service globally to the whole application as it is the main function in the application
   bootstrap: [AppComponent]
