@@ -21,6 +21,11 @@ import { AuthComponent } from './auth/auth.component';
 
 import { AppRoutingModule } from './app.routes.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginMessageComponent } from './login-message/login-message.component';
+//import { AuthService } from './auth.service';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SubscriptionListComponent,
     HeaderComponent,
     AuthComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginMessageComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FlexLayoutModule,
     AppRoutingModule
   ],
-  providers: [SubscriptionService], // provide the service globally to the whole application as it is the main function in the application
+  providers: [SubscriptionService, AuthService, AuthGuard], // provide the service globally to the whole application as it is the main function in the application
   bootstrap: [AppComponent]
 })
 export class AppModule { }
