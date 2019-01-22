@@ -12,16 +12,20 @@
       <span class="label">Home</span>
     </a>
 
-    <a mat-list-item routerLink="login">
-      <mat-icon class="icon">input</mat-icon>
-      <span class="label">Login</span>
-    </a>
+    <ng-template [ngIf]="!authService.isAuthenticated()">
+      <a mat-list-item routerLink="login">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Login</span>
+      </a>
+    </ng-template>
 
-    <a  mat-list-item type="button">
-      <mat-icon class="icon">input</mat-icon>
-      <span class="label">Log Out</span>
-    </a>  
-    </mat-nav-list>
+    <ng-template [ngIf]="authService.isAuthenticated()">
+      <a  mat-list-item type="button">
+        <mat-icon class="icon">input</mat-icon>
+        <span class="label">Log Out</span>
+      </a>
+    </ng-template>  
+  </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -39,25 +43,29 @@
      <!-- Main navigation bar - Desktop -->
      <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
         <ul fxLayout fxLayoutGap="20px" class="navigation-items">
-            <li>
-              <a routerLink="/">
-                  <mat-icon class="icon">home</mat-icon>
-                  <span class="label">Home</span>
-              </a>
-            </li>
+          <li>
+            <a routerLink="/">
+                <mat-icon class="icon">home</mat-icon>
+                <span class="label">Home</span>
+            </a>
+          </li>
+          <ng-template [ngIf]="!authService.isAuthenticated()">
             <li>
                 <a routerLink="/login">
                   <mat-icon class="icon">input</mat-icon>
                   <span  class="label">Login</span>
-                 </a>
+                  </a>
             </li>
+          </ng-template>
+          <ng-template [ngIf]="authService.isAuthenticated()">
             <li>
-                <a>
+                <a (click)="onLogout()">
                   <mat-icon class="icon">input</mat-icon>
                   <span class="label">Log Out</span>
-                 </a>
+                  </a>
             </li>
-        </ul>
+          </ng-template>
+      </ul>
      </div>
     </mat-toolbar>
     <main>

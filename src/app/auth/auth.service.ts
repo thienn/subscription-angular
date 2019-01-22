@@ -1,7 +1,14 @@
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class AuthService {
-    // loggedIn = false;
+    token: string;
+
+    constructor(private router: Router) {
+
+    }
 
     // For admin, and other use cases later
     signupUser(email: string, password: string) {
@@ -16,32 +23,40 @@ export class AuthService {
     loginUser(email: string, password: string) {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(
-                response => console.log(response)
+                response => {
+                    console.log(response)
+                    this.router.navigate(['/']);
+                    // After logging in assign the token given for the user to the local one
+                    firebase.auth().currentUser.getIdToken()
+                        .then(
+                            (token: string) => this.token = token
+                        )
+                }
             ).catch(
                 error => console.log(error)
             );
     
     }
 
-    /*
-    isAuthenticated() {
-        // Dummy test - Will implement proper authentication through Firebase later
-        const promise = new Promise(
-            (resolve, reject) => {
-                setTimeout(() => {
-                    resolve(this.loggedIn) 
-                }, 800);
-            }
-        )
-        return promise;
-    }
-
-    login() {
-        this.loggedIn = true;
-    }
-
     logout() {
-        this.loggedIn = false;
+        firebase.auth().signOut();
+        this.token = null; // clean out the local token
+        this.router.navigate(['/login'])
     }
-    */
+
+    // Get the token from backend (Firebase) - and store it
+    // Async task, as it will check locally first if it's still valid, if not then connect to the firebase again to get a new one.
+    getToken() {
+       // return firebase.auth().currentUser.getIdToken();
+       firebase.auth().currentUser.getIdToken()
+        .then(
+            (token: string) => this.token = token
+        );
+        return this.token
+    }
+
+    isAuthenticated() {
+        return this.token != null;
+    }
+
 }

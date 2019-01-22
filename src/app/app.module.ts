@@ -22,9 +22,9 @@ import { AuthComponent } from './auth/auth.component';
 import { AppRoutingModule } from './app.routes.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginMessageComponent } from './login-message/login-message.component';
-//import { AuthService } from './auth.service';
+
 import { AuthService } from './auth/auth.service';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './auth/auth-guard.service';
 import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
