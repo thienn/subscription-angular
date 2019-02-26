@@ -26,6 +26,7 @@ import { LoginMessageComponent } from './login-message/login-message.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { SigninComponent } from './auth/signin/signin.component';
+import { OrdinalPipe } from './subscriptions/subscription-list/ordinal.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SigninComponent } from './auth/signin/signin.component';
     AuthComponent,
     NotFoundComponent,
     LoginMessageComponent,
-    SigninComponent
+    SigninComponent,
+    OrdinalPipe
   ],
   imports: [
     BrowserModule,

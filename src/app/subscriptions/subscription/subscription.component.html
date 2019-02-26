@@ -65,7 +65,7 @@
       <mat-icon>close</mat-icon>
     </button>
     <mat-error *ngIf="title.invalid && (title.dirty || title.touched)">
-      Email is <strong>required</strong>
+      Title is <strong>required</strong>
     </mat-error>
   </mat-form-field>
  
@@ -89,10 +89,16 @@
   </mat-form-field>
 
   <mat-form-field>
+    <!--
     <input name="paydate" #paydate="ngModel" [(ngModel)]="subService.formData.paydate" matInput placeholder="paydate">
     <button mat-button *ngIf="subService.formData.paydate" matSuffix mat-icon-button aria-label="Clear" (click)="subService.formData.paydate=''">
       <mat-icon>close</mat-icon>
-    </button>
+    </button>-->
+    <mat-select name="paydate" #paydate="ngModel" [(ngModel)]="subService.formData.paydate" placeholder="Select date">
+        <mat-option *ngFor="let date of dates" [value]="date.value">
+          {{date.viewValue}}
+        </mat-option>
+      </mat-select>
   </mat-form-field>
 </div>
 
