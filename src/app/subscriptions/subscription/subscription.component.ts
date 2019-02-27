@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SubscriptionService } from '../../shared/subscription.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore'; 
 
 /*
   TODO:
-  Forms fix amount with decimals
+  Amount - Support for multiple currencies with dropdown selection
+  Amount - Add API for converting USD etc to NOK or so
+  Amount - Custom Validator for min / max for amount for it to be valid
+  Subscription List - Add filters 
 */
 
 @Component({
@@ -65,7 +68,7 @@ export class SubscriptionComponent implements OnInit {
       id: null,
       title: '',
       description: '',
-      amount: 0,
+      amount: null,
       paydate: ''
     }
   } 

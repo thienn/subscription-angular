@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatButtonModule, MatCheckboxModule, MatTableModule, MatGridListModule, MatIconModule, MatInputModule, MatFormFieldModule, MatListModule, MatToolbarModule, MatSidenavModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatTableModule, MatGridListModule, MatIconModule, MatInputModule, MatFormFieldModule, MatListModule, MatToolbarModule, MatSidenavModule, MatSelectModule, MatSortModule } from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -17,7 +17,8 @@ import { MatButtonModule, MatCheckboxModule, MatTableModule, MatGridListModule, 
     MatListModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule,
   ],
   exports: [
     MatButtonModule,
@@ -30,7 +31,8 @@ import { MatButtonModule, MatCheckboxModule, MatTableModule, MatGridListModule, 
     MatListModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule,
   ]
 })
 export class AppMaterialModule { }

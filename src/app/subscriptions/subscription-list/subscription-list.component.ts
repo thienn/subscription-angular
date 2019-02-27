@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from '../../shared/subscription.model';
 import { SubscriptionService } from '../../shared/subscription.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-subscription-list',
@@ -11,6 +12,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class SubscriptionListComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'amount', 'paydate', 'delete'];
   listOfSubscriptions: Subscription[]; // Array to store the subscriptions from the DB
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource;
 
   constructor(private subService: SubscriptionService, private store: AngularFirestore) { }
 
@@ -23,6 +26,8 @@ export class SubscriptionListComponent implements OnInit {
           ...subscription.payload.doc.data()
         } as Subscription;
       })
+     this.dataSource = new MatTableDataSource(this.listOfSubscriptions)
+     this.dataSource.sort = this.sort;
     });
   }
   

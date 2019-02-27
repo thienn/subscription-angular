@@ -79,7 +79,7 @@
     
   <!-- String in case the user want to mix up with valuta type -->
   <mat-form-field>
-    <input name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" matInput placeholder="amount" required>
+    <input type="number" name="amount" #amount="ngModel" [(ngModel)]="subService.formData.amount" matInput placeholder="amount" required>
     <button mat-button *ngIf="subService.formData.amount" matSuffix mat-icon-button aria-label="Clear" (click)="subService.formData.amount=''">
       <mat-icon>close</mat-icon>
     </button>
