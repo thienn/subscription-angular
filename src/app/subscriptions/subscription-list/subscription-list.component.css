@@ -2,3 +2,11 @@ table {
     width: 80%;
     margin: 30px 0 0 0;
 }
+
+.filterInput {
+    margin: 30px 0 0 0;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}

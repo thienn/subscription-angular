@@ -24,38 +24,48 @@
 </table>
 
 -->
+<!-- Filter input -->
+<mat-form-field class="filterInput">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
   <!-- Title Column -->
   <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
       <td mat-cell *matCellDef="let subscription" (click)="onUpdateMode(subscription)"> {{subscription.title}} </td>
+      <td mat-footer-cell *matFooterCellDef> Total </td>
     </ng-container>
   
     <!-- Description Column -->
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
       <td mat-cell *matCellDef="let subscription" (click)="onUpdateMode(subscription)"> {{subscription.description}} </td>
+      <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
   
     <!-- Amount Column -->
     <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
       <td mat-cell *matCellDef="let subscription" (click)="onUpdateMode(subscription)"> {{subscription.amount | currency:'NOK':'symbol':'1.2-2' }} </td>
+      <td mat-footer-cell *matFooterCellDef> {{getTotalCost()}} </td>
     </ng-container>
   
     <!-- Paydate Column -->
     <ng-container matColumnDef="paydate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Paydate </th>
       <td mat-cell *matCellDef="let subscription" (click)="onUpdateMode(subscription)"> {{subscription.paydate | ordinal }} </td>
+      <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
     <!-- Delete Column -->
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef> Delete </th>
       <td mat-cell *matCellDef="let subscription" (click)="onDelete(subscription.id)"><mat-icon color="warn">delete_forever</mat-icon></td>
+      <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>

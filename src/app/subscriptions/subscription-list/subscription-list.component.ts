@@ -4,6 +4,10 @@ import { SubscriptionService } from '../../shared/subscription.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSort, MatTableDataSource } from '@angular/material';
 
+/* TODO:
+  Either limit the filter or add something to take in pipes as it directly look at the data itself atm. So things like st, rd, NOK etc isn't currently working
+*/
+
 @Component({
   selector: 'app-subscription-list',
   templateUrl: './subscription-list.component.html',
@@ -30,7 +34,21 @@ export class SubscriptionListComponent implements OnInit {
      this.dataSource.sort = this.sort;
     });
   }
-  
+
+  /* https://material.angular.io/components/table/overview#filtering */
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase(); // lowercase to avoid case sensitivity
+  }
+    
+    /** Gets the total cost of all transactions. */
+    getTotalCost() {
+      //return this.dataSource.map(t => t.amount).reduce((acc, value) => acc + value, 0);
+      //this.dataSource = new MatTableDataSource(this.listOfSubscriptions)
+      //return this.dataSource.map(t => t.amount).reduce((acc, value) => acc + value, 0);
+      return 'Not implemented yet';
+    }
+
+
   // To populate the input fields when clicking on a item
   onUpdateMode(subcription: Subscription) {
     this.subService.updateSubscriptionFields(subcription);
