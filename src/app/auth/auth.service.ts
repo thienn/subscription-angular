@@ -1,12 +1,13 @@
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthService {
     token: string;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private snackBar: MatSnackBar) {
 
     }
 
@@ -14,7 +15,11 @@ export class AuthService {
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(
-                response => console.log(response)
+                response => {
+                    this.openSnackBar(`Registered account as ${email}`)
+                    console.log(response)
+                } 
+                //response => console.log(response)
             ).catch(
                 error => console.log(error)
             );
@@ -31,6 +36,8 @@ export class AuthService {
                         .then(
                             (token: string) => this.token = token
                         )
+
+                    this.openSnackBar(`Logged in as ${email}`)
                 }
             ).catch(
                 error => console.log(error)
@@ -41,6 +48,7 @@ export class AuthService {
     logout() {
         firebase.auth().signOut();
         this.token = null; // clean out the local token
+        this.openSnackBar(`User logged out`)
         this.router.navigate(['/login'])
     }
 
@@ -57,6 +65,12 @@ export class AuthService {
 
     isAuthenticated() {
         return this.token != null;
+    }
+
+    openSnackBar(message: string) {
+        this.snackBar.open(message, 'OK', {
+            duration: 5000,
+        });
     }
 
 }

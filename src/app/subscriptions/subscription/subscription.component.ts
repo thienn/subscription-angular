@@ -72,11 +72,7 @@ export class SubscriptionComponent implements OnInit {
       paydate: ''
     }
   } 
-
-  clearFields() {
-    this.resetForm();
-  }  
-
+  
   onSubmit(form: NgForm) {
     let data = Object.assign({}, form.value); // Get the data from the form (input fields) 
     delete data.id; // Delete the ID as Firestore will create it's own
